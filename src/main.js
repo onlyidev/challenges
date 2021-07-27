@@ -1,17 +1,18 @@
 import { createApp, h } from "vue";
 import App from "./App.vue";
 import NotFoundComponent from "./NotFoundComponent.vue";
-import "tailwindcss/tailwind.css";
-import "./index.css";
-
+// import "./index.css";
 import ch1 from "./components/ch1.vue";
 import ch2 from "./components/ch2.vue";
+import ch2bonus from "./components/ch2bonus.vue";
+import "tailwindcss/tailwind.css";
 
 const routes = {
   "/": App,
   "/apply": App,
   "/ch1": ch1,
   "/ch2": ch2,
+  "/ch2/bonus": ch2bonus
 };
 
 const names = {

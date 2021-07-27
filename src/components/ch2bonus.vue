@@ -7,7 +7,7 @@
     <div
       class="ring ring-gray-400 lg:col-span-2 lg:col-start-2 col-span-full col-start-1 rounded-2xl flex items-center px-8 justify-between h-4/5 w-4/5 lg:w-auto mx-auto lg:mx-0 relative z-10"
     >
-      <img src="../../ch2/images/logo.svg" class="h-4/5" alt="" />
+      <img src="../../ch2/images/logo-bonus.svg" class="h-4/5" alt="" />
       <!-- white box -->
       <div
         class="bg-white rounded-lg h-4/5 px-16 w-1/4 flex flex-col justify-center py-4 items-center"
@@ -34,14 +34,24 @@
       leave-to="opacity-0 scale-0"
     >
       <img
-        class="row-span-full col-span-full w-4/5 h-4/5"
-        src="../../ch2/images/bg-triangle.svg"
+        class="row-span-full col-span-full w-auto h-auto"
+        src="../../ch2/images/bg-pentagon.svg"
         alt=""
       />
       <Piece
+        @click="
+          picked = 'scissors';
+          pickHouse();
+        "
+        :color="colors['scissors']"
+        class="row-start-1 col-start-2"
+        :icon="icons['scissors']"
+      >
+      </Piece>
+      <Piece
         :color="colors['paper']"
         :icon="icons['paper']"
-        class="row-start-1 col-start-1"
+        class="row-start-2 col-start-3 self-start justify-self-end"
         @click="
           picked = 'paper';
           pickHouse();
@@ -49,22 +59,32 @@
       ></Piece>
       <Piece
         @click="
-          picked = 'scissors';
-          pickHouse();
-        "
-        :color="colors['scissors']"
-        class="row-start-1 col-start-3"
-        :icon="icons['scissors']"
-      >
-      </Piece>
-      <Piece
-        @click="
           picked = 'rock';
           pickHouse();
         "
-        class="row-start-3 col-start-2"
+        class="row-start-3 col-start-3 self-end justify-self-start"
         :icon="icons['rock']"
         :color="colors['rock']"
+      ></Piece>
+
+      <Piece
+        @click="
+          picked = 'lizard';
+          pickHouse();
+        "
+        class="row-start-3 col-start-1 self-end justify-self-end"
+        :icon="icons['lizard']"
+        :color="colors['lizard']"
+      ></Piece>
+
+      <Piece
+        @click="
+          picked = 'spock';
+          pickHouse();
+        "
+        class="row-start-2 col-start-1 self-start justify-self-start"
+        :icon="icons['spock']"
+        :color="colors['spock']"
       ></Piece>
     </TransitionRoot>
     <!-- step 2 -->
@@ -189,7 +209,7 @@
                 />
               </button>
             </DialogTitle>
-            <img src="../../ch2/images/image-rules.svg" alt="" />
+            <img src="../../ch2/images/image-rules-bonus.svg" alt="" />
           </TransitionChild>
         </div>
       </div>
@@ -213,12 +233,16 @@ const colors = {
   paper: "ring-blue-500",
   scissors: "ring-yellow-500",
   rock: "ring-red-500",
+  lizard: "ring-purple-500",
+  spock: "ring-green-500",
 };
 
 const icons = {
   paper: "../../ch2/images/icon-paper.svg",
   scissors: "../../ch2/images/icon-scissors.svg",
   rock: "../../ch2/images/icon-rock.svg",
+  lizard: "../../ch2/images/icon-lizard.svg",
+  spock: "../../ch2/images/icon-spock.svg",
 };
 
 const picked = ref("");
@@ -235,9 +259,11 @@ const info = reactive({
 const score = ref(0);
 
 const rules = {
-  paper: ["rock"],
-  scissors: ["paper"],
-  rock: ["scissors"],
+  paper: ["rock", "spock"],
+  scissors: ["paper", "lizard"],
+  rock: ["scissors", "lizard"],
+  lizard: ["spock", "paper"],
+  spock: ["scissors", "rock"],
 };
 
 function pickHouse(skip = false) {
@@ -247,7 +273,7 @@ function pickHouse(skip = false) {
     }, 1000);
     return;
   }
-  switch (Math.ceil(Math.random() * 9) % 3) {
+  switch (Math.ceil(Math.random() * 10) % 5) {
     case 0:
       house.value = "paper";
       break;
@@ -256,6 +282,12 @@ function pickHouse(skip = false) {
       break;
     case 2:
       house.value = "rock";
+      break;
+    case 3:
+      house.value = "lizard";
+      break;
+    case 4:
+      house.value = "spock";
       break;
 
     default:
