@@ -5,6 +5,7 @@ import NotFoundComponent from "./NotFoundComponent.vue";
 import ch1 from "./components/ch1.vue";
 import ch2 from "./components/ch2.vue";
 import ch2bonus from "./components/ch2bonus.vue";
+import slidingSquares from "./components/slidingSquares.vue";
 import "tailwindcss/tailwind.css";
 
 const routes = {
@@ -12,7 +13,8 @@ const routes = {
   "/apply": App,
   "/ch1": ch1,
   "/ch2": ch2,
-  "/ch2/bonus": ch2bonus
+  "/ch2/bonus": ch2bonus,
+  "/slsquare": slidingSquares
 };
 
 const names = {
@@ -20,6 +22,7 @@ const names = {
   "/apply": "Application",
   "/ch1": "Challenge 1",
   "/ch2": "Challenge 2",
+  "/slsquare": "Sliding squares",
 };
 
 const SimpleRouter = {

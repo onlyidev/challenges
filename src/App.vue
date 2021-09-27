@@ -1,6 +1,15 @@
 <template>
   <div
-    class="container h-[100vh] w-[100vw] m-0 p-0 flex flex-col justify-center items-center"
+    class="
+      container
+      h-[100vh]
+      w-[100vw]
+      m-0
+      p-0
+      flex flex-col
+      justify-center
+      items-center
+    "
   >
     <nav class="w-full h-12 fixed top-0 left-0">
       <Navbar />
