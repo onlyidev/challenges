@@ -27,7 +27,7 @@ const names = {
 
 const SimpleRouter = {
   data: () => ({
-    currentRoute: window.location.pathname,
+    currentRoute: window.location.pathname.split("/challenges")[1],
   }),
 
   computed: {
