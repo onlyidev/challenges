@@ -32,7 +32,7 @@ const SimpleRouter = {
 
   computed: {
     CurrentComponent() {
-      return routes[this.currentRoute] || NotFoundComponent;
+      return routes[this.currentRoute] || App;
     },
   },
 
